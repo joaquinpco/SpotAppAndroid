@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_clubbing"
+        android:title="Clubbing"/>
+
+    <item
+        android:id="@+id/navigation_events"
+        android:title="Events"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:title="Profile"/>
+
+</menu>
