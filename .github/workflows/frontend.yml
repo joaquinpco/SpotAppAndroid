@@ -32,13 +32,13 @@ jobs:
       uses: jsdaniell/create-json@1.1.2
       with:
         name: "./base/google-services.json"
-        json: ${{ secrets.GOOGLE_SERVICES_BASE }}
+        json: ${{ secrets.GOOGLE_SERVICES_APP }}
 
     - name: Create a google-services.json in feature
       uses: jsdaniell/create-json@1.1.2
       with:
         name: "./feature/google-services.json"
-        json: ${{ secrets.GOOGLE_SERVICES_FEATURE }}
+        json: ${{ secrets.GOOGLE_SERVICES_APP }}
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
