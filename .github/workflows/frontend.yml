@@ -22,18 +22,31 @@ jobs:
       with:
         java-version: 11
     
-    - name: Create a google-services.json
+    - name: Create a google-services.json in app
       uses: jsdaniell/create-json@1.1.2
       with:
         name: "./app/google-services.json"
-        json: ${{ secrets.GOOGLE_SERVICES }}
-    - uses: actions/upload-artifact@v1
-      with:
-        name: log
-        path: ./app/google-services.json
+        json: ${{ secrets.GOOGLE_SERVICES_APP }}
+
+    - name: Create a google-services.json in base
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "./base/google-services.json"
+          json: ${{ secrets.GOOGLE_SERVICES_BASE }}
+
+    - name: Create a google-services.json in feature
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "./feature/google-services.json"
+          json: ${{ secrets.GOOGLE_SERVICES_FEATURE }}
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     
     - name: Build with Gradle
       run: ./gradlew build
+
+    - uses: actions/upload-artifact@v1
+        with:
+          name: outputs-apk
+          path: ./app/build/outputs
