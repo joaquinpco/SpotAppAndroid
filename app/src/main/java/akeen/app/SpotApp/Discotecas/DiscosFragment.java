@@ -1,10 +1,12 @@
 package akeen.app.SpotApp.Discotecas;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -22,7 +24,6 @@ import model.firebase.RealmModel.DiscotecaRealm;
 
 public class DiscosFragment extends Fragment {
 
-    private Toolbar _oToolbar;
     public static ProgressBar oProgressBar;
 
     @Nullable
@@ -31,19 +32,12 @@ public class DiscosFragment extends Fragment {
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.fragment_discos, container, false);
-        _oToolbar = (Toolbar) v.findViewById(R.id.toolbar);
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new
                     StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
-        }
-
-        if(_oToolbar != null)
-        {
-            //setSupportActionBar(_oToolbar);
-            _oToolbar.setTitle("Discotecas");
         }
 
         //Obtenemos las discotecas desde firebase en el arraylist estático.
