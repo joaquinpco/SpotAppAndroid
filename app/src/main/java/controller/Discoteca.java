@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.Collections;
-import java.util.ArrayList;
-
 public class Discoteca {
 
     private String _sNombre;
@@ -22,8 +19,7 @@ public class Discoteca {
      * @param iIdProvincia Identificador de la provincia de dicha discoteca
      */
     public Discoteca(String sNombre, String sCiudad, String sImagen, double dLatitud, double dLongitud,
-                     int iIdProvincia)
-    {
+                     int iIdProvincia) {
         setNombre(sNombre);
         setCiudad(sCiudad);
         setImagen(sImagen);
@@ -32,31 +28,27 @@ public class Discoteca {
         setIdProvincia(iIdProvincia);
     }
 
-    public Discoteca(){}
-
+    public Discoteca() {}
 
     public String getcNombreDisco() { return _sNombre; }
-
-    public void setNombre(String sNombre) { _sNombre = sNombre; }
-
     public String getCiudad() { return _sCiudad; }
-
-    public void setCiudad(String sCiudad) { _sCiudad = sCiudad; }
-
     public String getImagen() { return _sImagen; }
-
-    public void setImagen(String sImagen) { _sImagen = sImagen; }
-
     public double getLatitud() { return _dLatitud; }
-
-    public void setLatitud(double dLatitud) { _dLatitud = dLatitud; }
-
     public double getLongitud() { return _dLongitud; }
-
-    public void setdLongitud(double dLongitud) { _dLongitud = dLongitud; }
-
     public int getIdProvincia() { return _iIdProvincia; }
 
+    public void setNombre(String sNombre) { _sNombre = sNombre; }
+    public void setCiudad(String sCiudad) { _sCiudad = sCiudad; }
+    public void setImagen(String sImagen) { _sImagen = sImagen; }
+    public void setLatitud(double dLatitud) { _dLatitud = dLatitud; }
+    public void setdLongitud(double dLongitud) { _dLongitud = dLongitud; }
     public void setIdProvincia(int iIdProvincia) { _iIdProvincia = iIdProvincia; }
+
+    @Override
+    public String toString() {
+        return "Discoteca=[ nombre=" + _sNombre+ ", ciudad=" + _sCiudad + ", imagen=" + _sImagen +
+                ", latitud=" + _dLatitud + ", longitud=" + _dLongitud + ", idProvincia=" +
+                _iIdProvincia + "]";
+    }
 
 }
