@@ -29,6 +29,13 @@ android {
     lintOptions {
         abortOnError false
     }
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src/main/java', 'src/test'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -43,4 +50,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:16.0.1'
     implementation 'io.realm:android-adapters:2.0.0' // RealmDB
     implementation 'com.squareup.picasso:picasso:2.71828' // Picasso
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.25.1'
 }

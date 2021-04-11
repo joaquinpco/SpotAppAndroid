@@ -103,12 +103,6 @@ public class LoginActivity extends AppCompatActivity implements
             StrictMode.setThreadPolicy(policy);
         }
 
-        /*
-          Lanzamos la peticion de almacenamiento, si ya están
-          no la realiza
-          */
-        Kernel.getInstance().guardaroNoProvinciasEnRealmDB();
-
     }
 
     @Override
