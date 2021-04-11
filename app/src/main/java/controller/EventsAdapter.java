@@ -9,16 +9,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import akeen.app.SpotApp.R;
-import model.firebase.FestivalesFb;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> {
 
-    private List<FestivalesFb> _aEvents;
 
-    public EventsAdapter(List<FestivalesFb> aEvents)
-    {
-        _aEvents = aEvents;
-    }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,14 +24,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        FestivalesFb movie = _aEvents.get(position);
-        holder.title.setText(movie.getName());
-        holder.genre.setText(movie.getFecha());
+
     }
 
     @Override
     public int getItemCount() {
-        return _aEvents.size();
+        return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
