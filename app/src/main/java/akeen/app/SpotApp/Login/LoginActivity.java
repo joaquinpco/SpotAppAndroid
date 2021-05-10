@@ -36,49 +36,45 @@ public class LoginActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
 
     private static final String TAG = "LoginActivity";
-    public static final int SIGN_IN_CODE = 777;
+    private static final int SIGN_IN_CODE = 777;
 
-    private FirebaseAuth _oAuth;
-    private FirebaseAuth.AuthStateListener _oFirebaseAuthListener;
-    private SignInButtonImpl _btnSignIn;
-    private GoogleApiClient _mGoogleApiClient;
-    private ProgressBar _oProgressBar;
+    private FirebaseAuth oAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private SignInButtonImpl signInButton;
+    private GoogleApiClient googleApiClient;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Configuración de inicio de sesión con Google
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.
                 DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
-        _mGoogleApiClient = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
 
         //Incialización UI Components y modificamos sus propiedades
-        _btnSignIn = (SignInButtonImpl) findViewById(R.id.sign_in_button);
-        _oProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-
-
-        _btnSignIn.setOnClickListener(new View.OnClickListener() {
+        signInButton = (SignInButtonImpl) findViewById(R.id.sign_in_button);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(_mGoogleApiClient);
+                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(intent, SIGN_IN_CODE);
             }
         });
 
         //Referencia a objeto FirebaseAuth
-        _oAuth = FirebaseAuth.getInstance();
+        oAuth = FirebaseAuth.getInstance();
 
-        _oFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+        authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -132,18 +128,18 @@ public class LoginActivity extends AppCompatActivity implements
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount signInAccount) {
 
-        _oProgressBar.setVisibility(View.VISIBLE);
-        _btnSignIn.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        signInButton.setVisibility(View.GONE);
 
         AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(),
                 null);
-        _oAuth.signInWithCredential(credential).addOnCompleteListener(this,
+        oAuth.signInWithCredential(credential).addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                _oProgressBar.setVisibility(View.GONE);
-                _btnSignIn.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+                signInButton.setVisibility(View.VISIBLE);
 
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Error de inicio de Sesion",
@@ -157,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements
     protected void onStart() {
         super.onStart();
         //Añadimos el listener
-        _oAuth.addAuthStateListener(_oFirebaseAuthListener);
+        oAuth.addAuthStateListener(authStateListener);
     }
 
     /**
@@ -179,8 +175,8 @@ public class LoginActivity extends AppCompatActivity implements
         super.onStop();
 
         //En caso de pausar el proceso eliminamos el Listener
-        if (_oFirebaseAuthListener != null) {
-            _oAuth.removeAuthStateListener(_oFirebaseAuthListener);
+        if (authStateListener != null) {
+            oAuth.removeAuthStateListener(authStateListener);
         }
     }
 

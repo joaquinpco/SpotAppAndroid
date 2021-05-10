@@ -25,7 +25,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.UUID;
 
-import controller.AsyncTasks.ProvinciasData;
 import controller.HorizontalReciclerView.RecyclerViewDataAdapter;
 import controller.HorizontalReciclerView.SectionDataModel;
 import controller.HorizontalReciclerView.SingleItemModel;
@@ -217,7 +216,7 @@ public class Kernel {
                     En primer lugar se descargará los datos
                     En segundo lugar se insertarán secuencialmente
                  */
-                new ProvinciasData().execute();
+
             }
             catch (Exception ex) {}
         }

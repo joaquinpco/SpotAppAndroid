@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity android:name=".mainView.MainActivity"></activity>
         <activity android:name=".BarraNavegacionInferior.BottomNavigationVw" />
 
         <meta-data
