@@ -61,7 +61,7 @@ public class BottomNavigationVw extends AppCompatActivity implements
         String packageClassName = getToolbarTitleOrPackageClassName(menuItem)[PACKAGE_CLASS_NAME];
         changeFragmentFromPackageClassName(packageClassName);
 
-        return false;
+        return true;
     }
 
     private String[] getToolbarTitleOrPackageClassName(MenuItem menuItem) {
@@ -76,7 +76,9 @@ public class BottomNavigationVw extends AppCompatActivity implements
                 break;
             case R.id.navigation_events:
                 toolbarTitleOrPackageClassName[TOOLBAR_TITLE] = "Events";
-                toolbarTitleOrPackageClassName[PACKAGE_CLASS_NAME] = "";
+                toolbarTitleOrPackageClassName[
+                    PACKAGE_CLASS_NAME
+                ] = "";
                 break;
             case R.id.navigation_profile:
                 toolbarTitleOrPackageClassName[TOOLBAR_TITLE] = "Profile";
@@ -85,8 +87,6 @@ public class BottomNavigationVw extends AppCompatActivity implements
                 ] = "akeen.app.SpotApp.Profile.ProfileFragment";
                 break;
         }
-
-
 
         return toolbarTitleOrPackageClassName;
     }
