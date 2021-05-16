@@ -15,13 +15,14 @@ import org.json.JSONArray;
  * @version 1.0
  */
 public class Utils {
-
     public static Utils oCore = null;
 
+    private Utils() {}
     public static Utils getInstance()
     {
         return oCore == null ? new Utils() : oCore;
     }
+
     public void signOut() {
         FirebaseAuth.getInstance().signOut();
     }
