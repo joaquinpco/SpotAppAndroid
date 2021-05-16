@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import akeen.app.SpotApp.R;
-import core.Kernel;
+import core.Utils;
 
 public class ProfileFragment extends Fragment
 {
@@ -30,7 +29,7 @@ public class ProfileFragment extends Fragment
 
         View oView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        FirebaseUser oFBUser = Kernel.getInstance().getProfileFromGoogle();
+        FirebaseUser oFBUser = Utils.getInstance().getProfileFromGoogle();
 
         //Instatiate UI/UX
         _oImgView = (ImageView) oView.findViewById(R.id.imgProfile);

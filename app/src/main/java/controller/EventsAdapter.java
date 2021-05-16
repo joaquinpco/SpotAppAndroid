@@ -12,9 +12,6 @@ import akeen.app.SpotApp.R;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> {
 
-
-
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -23,9 +20,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-
-    }
+    public void onBindViewHolder(MyViewHolder holder, int position) {}
 
     @Override
     public int getItemCount() {

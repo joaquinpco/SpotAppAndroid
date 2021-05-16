@@ -28,7 +28,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import akeen.app.SpotApp.BarraNavegacionInferior.BottomNavigationVw;
 import akeen.app.SpotApp.R;
-import core.Kernel;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

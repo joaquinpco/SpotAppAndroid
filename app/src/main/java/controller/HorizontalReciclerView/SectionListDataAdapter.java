@@ -16,68 +16,47 @@ import akeen.app.SpotApp.R;
 public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListDataAdapter.SingleItemRowHolder> {
 
     private ArrayList<SingleItemModel> itemsList;
-    private Context mContext;
+    private Context context;
 
     public SectionListDataAdapter(Context context, ArrayList<SingleItemModel> itemsList) {
         this.itemsList = itemsList;
-        this.mContext = context;
+        this.context = context;
     }
 
     @Override
     public SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_single_card, null);
-        SingleItemRowHolder mh = new SingleItemRowHolder(v);
-        return mh;
+        View view = LayoutInflater.from(viewGroup.getContext())
+                        .inflate(R.layout.list_single_card, null);
+        SingleItemRowHolder singleItemRowHolder = new SingleItemRowHolder(view);
+        return singleItemRowHolder;
     }
 
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
-
         SingleItemModel singleItem = itemsList.get(i);
-
-        holder.tvTitle.setText(singleItem.getName());
-
-
-       /* Glide.with(mContext)
-                .load(feedItem.getImageURL())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .error(R.drawable.bg)
-                .into(feedListRowHolder.thumbView);*/
+        holder.itemName.setText(singleItem.getName());
     }
 
     @Override
     public int getItemCount() {
-        return (null != itemsList ? itemsList.size() : 0);
+        return null != itemsList ? itemsList.size() : 0;
     }
 
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
-
-        protected TextView tvTitle;
-
+        protected TextView itemName;
         protected ImageView itemImage;
-
 
         public SingleItemRowHolder(View view) {
             super(view);
-
-            this.tvTitle = (TextView) view.findViewById(R.id.tvTitle);
+            this.itemName = (TextView) view.findViewById(R.id.tvTitle);
             this.itemImage = (ImageView) view.findViewById(R.id.itemImage);
-
-
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-                    Toast.makeText(v.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(v.getContext(), itemName.getText(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
         }
-
     }
 
 }

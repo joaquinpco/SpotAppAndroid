@@ -1,29 +1,30 @@
 package core;
 
+import android.util.Log;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import java.util.ArrayList;
 
-import controller.HorizontalReciclerView.SectionDataModel;
+import org.json.JSONArray;
 
 /**
  * @author joaquinpco
  * @version 1.0
  */
-public class Kernel {
+public class Utils {
 
-    public static Kernel oCore = null;
+    public static Utils oCore = null;
 
-    public static Kernel getInstance()
+    public static Utils getInstance()
     {
-        return oCore == null ? new Kernel() : oCore;
+        return oCore == null ? new Utils() : oCore;
     }
-
     public void signOut() {
         FirebaseAuth.getInstance().signOut();
     }
-
     public FirebaseUser getProfileFromGoogle() {
         return FirebaseAuth.getInstance().getCurrentUser();
     }

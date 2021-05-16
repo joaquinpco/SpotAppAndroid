@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Discoteca implements Serializable {
 
@@ -36,6 +37,24 @@ public class Discoteca implements Serializable {
     public void setLatitud(double dLatitud) { this.latitud = dLatitud; }
     public void setdLongitud(double dLongitud) { this.longitud = dLongitud; }
     public void setIdProvincia(int iIdProvincia) { this.idProvincia = iIdProvincia; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discoteca discoteca = (Discoteca) o;
+        return Double.compare(discoteca.latitud, latitud) == 0 &&
+                Double.compare(discoteca.longitud, longitud) == 0 &&
+                idProvincia == discoteca.idProvincia &&
+                Objects.equals(nombre, discoteca.nombre) &&
+                Objects.equals(ciudad, discoteca.ciudad) &&
+                Objects.equals(imagen, discoteca.imagen);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, ciudad, imagen, latitud, longitud, idProvincia);
+    }
 
     @Override
     public String toString() {
