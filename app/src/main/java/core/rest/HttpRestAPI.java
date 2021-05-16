@@ -10,7 +10,9 @@ public class HttpRestAPI implements API{
 
     public static HttpRestAPI httpRest = null;
 
-    private static HttpRestAPI getInstance() {
+    private HttpRestAPI() {}
+
+    public static HttpRestAPI getInstance() {
         return httpRest == null ? new HttpRestAPI() : httpRest;
     }
 
