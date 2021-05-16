@@ -3,14 +3,17 @@
 
     <item
         android:id="@+id/navigation_clubbing"
+        android:icon="@drawable/baseline_room_blue_a200_24dp"
         android:title="Clubbing"/>
 
     <item
         android:id="@+id/navigation_events"
+        android:icon="@drawable/baseline_event_blue_200_24dp"
         android:title="Events"/>
 
     <item
         android:id="@+id/navigation_profile"
+        android:icon="@drawable/baseline_account_circle_blue_300_24dp"
         android:title="Profile"/>
 
 </menu>
