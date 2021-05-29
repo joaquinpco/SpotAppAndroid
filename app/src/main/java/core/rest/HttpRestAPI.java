@@ -28,23 +28,16 @@ public class HttpRestAPI implements API{
     }
 
     @Override
-    public void GET(String url, Context context) {
-
+    public void GET(String url, Context context, final VolleyCallback callback) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(final String response) {
-                JSONArray jsonArray = null;
-                try {
-                    jsonArray = new JSONArray(response);
-                }
-                catch (Exception ex){}
+            public void onResponse(String response) {
+                callback.onSuccess(response);
             }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
+            public void onErrorResponse(VolleyError error) {}
         });
         requestQueue.add(stringRequest);
     }
@@ -57,5 +50,9 @@ public class HttpRestAPI implements API{
     @Override
     public JsonArrayRequest POST(String url, Context context, String... params) {
         return null;
+    }
+
+    public interface VolleyCallback {
+        public void onSuccess(String response);
     }
 }

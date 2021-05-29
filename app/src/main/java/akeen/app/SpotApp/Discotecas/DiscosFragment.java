@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import org.json.JSONArray;
+
 import akeen.app.SpotApp.R;
 import core.Utils;
 import core.rest.HttpRestAPI;
@@ -39,9 +41,19 @@ public class DiscosFragment extends Fragment {
     }
 
     private void getClubsAndStorageIntoRealm() {
-        HttpRestAPI.getInstance().GetClubsAndInsertIntoRealmDB(
+        HttpRestAPI.getInstance().GET(
                 getResources().getString(R.string.clubs_endpoint),
-                getContext()
+                getContext(),
+                new HttpRestAPI.VolleyCallback(){
+                    @Override
+                    public void onSuccess(String response) {
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(response);
+                        }
+                        catch (Exception ex){}
+                    }
+                }
         );
     }
 
