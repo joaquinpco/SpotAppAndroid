@@ -1,10 +1,21 @@
 package core.rest;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 public class HttpRestAPI implements API{
 
@@ -17,32 +28,34 @@ public class HttpRestAPI implements API{
     }
 
     @Override
-    public JsonArrayRequest GET(String url) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.i("Resultado: ", response.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error: ", error.getMessage());
-                    }
+    public void GET(String url, Context context) {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(final String response) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = new JSONArray(response);
                 }
-        );
-        return jsonArrayRequest;
+                catch (Exception ex){}
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(stringRequest);
     }
 
     @Override
-    public JsonArrayRequest GET(String url, String... params) {
+    public JsonArrayRequest GET(String url, Context context, String... params) {
         return null;
     }
 
     @Override
-    public JsonArrayRequest POST(String url, String... params) {
+    public JsonArrayRequest POST(String url, Context context, String... params) {
         return null;
     }
 }

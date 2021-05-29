@@ -1,9 +1,12 @@
 package core.rest;
 
+import android.content.Context;
+
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 public interface API {
-    public JsonArrayRequest GET(String url);
-    public JsonArrayRequest GET(String url, String ... params);
-    public JsonArrayRequest POST(String url, String ... params);
+    public void GET(String url, Context context);
+    public JsonArrayRequest GET(String url, Context context, String ... params);
+    public JsonArrayRequest POST(String url, Context context, String ... params);
 }

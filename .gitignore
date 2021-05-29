@@ -73,3 +73,5 @@ lint/tmp/
 # App Specific cases 
 app/release/output.json
 .idea/codeStyles/
+#Endpoints
+app/src/main/res/values/spotapp_endpoints.xml
