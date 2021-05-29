@@ -43,12 +43,18 @@ public class HttpRestAPI implements API{
     }
 
     @Override
-    public JsonArrayRequest GET(String url, Context context, String... params) {
+    public JsonArrayRequest GET(
+            String url, Context context,
+            final VolleyCallback callback, String ... params
+    ) {
         return null;
     }
 
     @Override
-    public JsonArrayRequest POST(String url, Context context, String... params) {
+    public JsonArrayRequest POST(
+            String url, Context context,
+            final VolleyCallback callback, String ... params
+    ) {
         return null;
     }
 
