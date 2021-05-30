@@ -3,12 +3,12 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "akeen.app.SpotApp"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
