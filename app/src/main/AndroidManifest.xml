@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application>
+    <application
+        android:usesCleartextTraffic="true"
+        >
         <activity android:name=".BarraNavegacionInferior.BottomNavigationVw" />
 
         <meta-data
@@ -25,6 +27,7 @@
             android:name=".Discotecas.DiscosFragment"
             android:label="@string/title_activity_maiin"
             android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>
