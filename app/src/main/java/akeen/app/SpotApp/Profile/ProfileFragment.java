@@ -18,26 +18,24 @@ import core.Utils;
 
 public class ProfileFragment extends Fragment
 {
-    private ImageView _oImgView;
-    private TextView _oTxtNameLastName;
+    private ImageView profileImageView;
+    private TextView fullNameTextView;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState)
-    {
+                             @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        fillUIwithFirebaseData();
+        return view;
+    }
 
-        View oView = inflater.inflate(R.layout.fragment_profile, container, false);
-
+    private void fillUIwithFirebaseData() {
         FirebaseUser oFBUser = Utils.getInstance().getProfileFromGoogle();
-
-        //Instatiate UI/UX
-        _oImgView = (ImageView) oView.findViewById(R.id.imgProfile);
-        _oTxtNameLastName = (TextView) oView.findViewById(R.id.txtUsername);
-
-        //Set Atrbts,
-        _oTxtNameLastName.setText(oFBUser.getDisplayName());
-        Picasso.get().load(oFBUser.getPhotoUrl()).into(_oImgView);
-        return oView;
+        profileImageView = (ImageView) view.findViewById(R.id.imgProfile);
+        fullNameTextView = (TextView) view.findViewById(R.id.txtUsername);
+        fullNameTextView.setText(oFBUser.getDisplayName());
+        Picasso.get().load(oFBUser.getPhotoUrl()).into(profileImageView);
     }
 }
