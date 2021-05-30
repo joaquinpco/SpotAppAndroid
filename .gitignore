@@ -74,6 +74,4 @@ lint/tmp/
 app/release/output.json
 .idea/codeStyles/
 
-#SpotApp Credentials and live Endpoints
-app/src/main/res/values/credentials_spotapp.xml
-
+app/src/main/res/values/spotapp_endpoints.xml
